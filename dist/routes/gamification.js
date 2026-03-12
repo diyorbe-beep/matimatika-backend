@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const gamificationController_1 = require("../controllers/gamificationController");
+const auth_1 = require("../middleware/auth");
+const validation_1 = require("../middleware/validation");
+const types_1 = require("../types");
+const validation_2 = require("../middleware/validation");
+const router = (0, express_1.Router)();
+router.get('/achievements', auth_1.optionalAuth, (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), gamificationController_1.GamificationController.getAchievements);
+router.get('/achievements/user/:userId?', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), gamificationController_1.GamificationController.getUserAchievements);
+router.post('/achievements/:id/unlock', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), gamificationController_1.GamificationController.unlockAchievement);
+router.get('/leaderboard/weekly', auth_1.optionalAuth, (0, validation_1.validateRequest)(validation_2.leaderboardQuerySchema, 'query'), gamificationController_1.GamificationController.getWeeklyLeaderboard);
+router.get('/leaderboard/all-time', auth_1.optionalAuth, (0, validation_1.validateRequest)(validation_2.leaderboardQuerySchema, 'query'), gamificationController_1.GamificationController.getAllTimeLeaderboard);
+router.get('/stats/:userId?', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), gamificationController_1.GamificationController.getUserStats);
+router.get('/level/:userId?', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), gamificationController_1.GamificationController.getUserLevel);
+router.post('/xp/award', auth_1.authenticateToken, gamificationController_1.GamificationController.awardXP);
+router.post('/league/update', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), gamificationController_1.GamificationController.updateLeague);
+router.get('/league/:userId?', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), gamificationController_1.GamificationController.getUserLeague);
+router.post('/achievements', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), gamificationController_1.GamificationController.createAchievement);
+router.put('/achievements/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), gamificationController_1.GamificationController.updateAchievement);
+router.delete('/achievements/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), gamificationController_1.GamificationController.deleteAchievement);
+router.get('/analytics', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), gamificationController_1.GamificationController.getGamificationAnalytics);
+router.post('/league/weekly-update', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), gamificationController_1.GamificationController.processWeeklyLeagueUpdate);
+exports.default = router;
+//# sourceMappingURL=gamification.js.map

@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const progressController_1 = require("../controllers/progressController");
+const auth_1 = require("../middleware/auth");
+const validation_1 = require("../middleware/validation");
+const types_1 = require("../types");
+const validation_2 = require("../middleware/validation");
+const router = (0, express_1.Router)();
+router.get('/user/:userId', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), progressController_1.ProgressController.getUserProgress);
+router.get('/my', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), progressController_1.ProgressController.getMyProgress);
+router.get('/lesson/:lessonId', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), progressController_1.ProgressController.getLessonProgress);
+router.post('/lesson/:lessonId/complete', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), progressController_1.ProgressController.completeLesson);
+router.get('/stats/:userId?', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), progressController_1.ProgressController.getProgressStats);
+router.get('/leaderboard', auth_1.optionalAuth, (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), progressController_1.ProgressController.getLeaderboard);
+router.get('/leaderboard/weekly', auth_1.optionalAuth, (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), progressController_1.ProgressController.getWeeklyLeaderboard);
+router.get('/modules/:moduleId', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), progressController_1.ProgressController.getModuleProgress);
+router.get('/streak', auth_1.authenticateToken, progressController_1.ProgressController.getLearningStreak);
+router.put('/update', auth_1.authenticateToken, progressController_1.ProgressController.updateProgress);
+router.post('/reset/:userId', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), progressController_1.ProgressController.resetUserProgress);
+router.get('/analytics', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.progressQuerySchema, 'query'), progressController_1.ProgressController.getProgressAnalytics);
+exports.default = router;
+//# sourceMappingURL=progress.js.map

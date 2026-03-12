@@ -1,0 +1,193 @@
+{"code":"ECONNREFUSED","level":"error","message":"Failed to start server:","stack":"AggregateError [ECONNREFUSED]: \n    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\index.js:87:9)","timestamp":"2026-03-05T10:40:19.869Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Failed to start server:","stack":"AggregateError\n    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (D:\\math-quest-academy-25\\backend\\src\\index.ts:114:5)","timestamp":"2026-03-05T10:40:36.800Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Failed to start server:","stack":"AggregateError [ECONNREFUSED]: \n    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\index.js:87:9)","timestamp":"2026-03-05T11:10:22.724Z"}
+{
+  service: 'mathquest-backend',
+  message: "Application error Cannot read properties of undefined (reading 'generateQuestions')",
+  stack: "TypeError: Cannot read properties of undefined (reading 'generateQuestions')\n" +
+    '    at getLessonQuestions (D:\\math-quest-academy-25\\backend\\dist\\controllers\\mockQuestionsController.js:135:36)\n' +
+    '    at Layer.handle [as handle_request] (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+    '    at Route.dispatch (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\index.js:284:15\n' +
+    '    at param (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\index.js:365:14)\n' +
+    '    at param (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\index.js:376:14)\n' +
+    '    at param (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\index.js:376:14)\n' +
+    '    at Function.process_params (D:\\math-quest-academy-25\\backend\\node_modules\\express\\lib\\router\\index.js:421:3)',
+  context: {
+    moduleId: 'addition-subtraction',
+    lessonIndex: '1',
+    method: 'getLessonQuestions'
+  },
+  timestamp: '2026-03-09 11:32:57',
+  level: 'error'
+}
+{
+  service: 'mathquest-backend',
+  message: 'Application error',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:39:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  context: { context: 'Database connection failed' },
+  timestamp: '2026-03-12 19:09:28',
+  level: 'error'
+}
+{
+  service: 'mathquest-backend',
+  message: 'Application error',
+  stack: 'AggregateError\n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\src\\database\\connection.ts:52:22)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\src\\server.ts:9:5)',
+  context: { context: 'Database connection failed' },
+  timestamp: '2026-03-12 19:13:45',
+  level: 'error'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError\n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\src\\database\\connection.ts:37:22)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\src\\server.ts:9:5)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:40:15'
+}
+{
+  service: 'mathquest-backend',
+  message: 'Application error',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:39:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  context: { context: 'Database connection failed' },
+  timestamp: '2026-03-12 19:41:00',
+  level: 'error'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:41:52'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:44:15'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:46:32'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:48:17'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:49:01'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:49:56'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:51:47'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:55:39'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 19:55:57'
+}
+{
+  service: 'mathquest-backend',
+  error: '',
+  stack: 'AggregateError [ECONNREFUSED]: \n' +
+    '    at D:\\math-quest-academy-25\\backend\\node_modules\\pg-pool\\index.js:45:11\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async DatabaseConnection.connect (D:\\math-quest-academy-25\\backend\\dist\\database\\connection.js:27:28)\n' +
+    '    at async startServer (D:\\math-quest-academy-25\\backend\\dist\\server.js:12:9)',
+  level: 'error',
+  message: 'Database connection failed, using mock mode',
+  timestamp: '2026-03-12 20:00:11'
+}

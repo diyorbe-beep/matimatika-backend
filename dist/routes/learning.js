@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const learningController_1 = require("../controllers/learningController");
+const auth_1 = require("../middleware/auth");
+const validation_1 = require("../middleware/validation");
+const types_1 = require("../types");
+const validation_2 = require("../middleware/validation");
+const router = (0, express_1.Router)();
+router.get('/modules', (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), learningController_1.LearningController.getModules);
+router.get('/modules/:id', (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.getModule);
+router.get('/modules/:id/lessons', (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), learningController_1.LearningController.getModuleLessons);
+router.get('/lessons/:id', (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.getLesson);
+router.get('/lessons/:id/questions', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.getLessonQuestions);
+router.post('/lessons/:id/submit', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.submitQuiz);
+router.post('/modules', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.moduleCreationSchema), learningController_1.LearningController.createModule);
+router.put('/modules/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.updateModule);
+router.delete('/modules/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.deleteModule);
+router.post('/lessons', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.lessonCreationSchema), learningController_1.LearningController.createLesson);
+router.put('/lessons/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.updateLesson);
+router.delete('/lessons/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.deleteLesson);
+router.post('/questions', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.questionCreationSchema), learningController_1.LearningController.createQuestion);
+router.put('/questions/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.updateQuestion);
+router.delete('/questions/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), learningController_1.LearningController.deleteQuestion);
+exports.default = router;
+//# sourceMappingURL=learning.js.map

@@ -1,0 +1,79 @@
+{
+  "users": {},
+  "questions": {
+    "world-1": {
+      "addition-subtraction": [
+        { "id": 1, "question": "24 + 17 = ?", "options": ["41", "31", "51", "61"], "correct": 0, "emoji": "➕" },
+        { "id": 2, "question": "45 - 23 = ?", "options": ["12", "22", "32", "42"], "correct": 1, "emoji": "➖" },
+        { "id": 3, "question": "67 + 28 = ?", "options": ["85", "95", "105", "115"], "correct": 1, "emoji": "➕" },
+        { "id": 4, "question": "82 - 45 = ?", "options": ["27", "37", "47", "57"], "correct": 1, "emoji": "➖" },
+        { "id": 5, "question": "56 + 39 = ?", "options": ["85", "95", "105", "115"], "correct": 1, "emoji": "➕" }
+      ]
+    },
+    "world-2": {
+      "addition-subtraction": [
+        { "id": 6, "question": "123 + 89 = ?", "options": ["212", "202", "192", "182"], "correct": 0, "emoji": "➕" },
+        { "id": 7, "question": "156 - 78 = ?", "options": ["68", "78", "88", "98"], "correct": 1, "emoji": "➖" },
+        { "id": 8, "question": "234 + 167 = ?", "options": ["401", "391", "381", "371"], "correct": 0, "emoji": "➕" },
+        { "id": 9, "question": "289 - 145 = ?", "options": ["134", "144", "154", "164"], "correct": 1, "emoji": "➖" },
+        { "id": 10, "question": "345 + 278 = ?", "options": ["623", "613", "603", "593"], "correct": 0, "emoji": "➕" }
+      ]
+    },
+    "world-3": {
+      "addition-subtraction": [
+        { "id": 11, "question": "567 + 432 = ?", "options": ["999", "989", "979", "969"], "correct": 0, "emoji": "➕" },
+        { "id": 12, "question": "789 - 234 = ?", "options": ["545", "555", "565", "575"], "correct": 1, "emoji": "➖" },
+        { "id": 13, "question": "890 + 567 = ?", "options": ["1457", "1447", "1437", "1427"], "correct": 0, "emoji": "➕" },
+        { "id": 14, "question": "912 - 456 = ?", "options": ["446", "456", "466", "476"], "correct": 1, "emoji": "➖" },
+        { "id": 15, "question": "678 + 789 = ?", "options": ["1467", "1457", "1447", "1437"], "correct": 0, "emoji": "➕" }
+      ]
+    },
+    "world-4": {
+      "multiplication-division": [
+        { "id": 16, "question": "12 × 8 = ?", "options": ["86", "96", "106", "116"], "correct": 1, "emoji": "✖️" },
+        { "id": 17, "question": "96 ÷ 8 = ?", "options": ["10", "11", "12", "13"], "correct": 1, "emoji": "➗" },
+        { "id": 18, "question": "15 × 7 = ?", "options": ["95", "105", "115", "125"], "correct": 1, "emoji": "✖️" },
+        { "id": 19, "question": "144 ÷ 12 = ?", "options": ["10", "11", "12", "13"], "correct": 1, "emoji": "➗" },
+        { "id": 20, "question": "18 × 6 = ?", "options": ["98", "108", "118", "128"], "correct": 1, "emoji": "✖️" }
+      ]
+    },
+    "world-5": {
+      "multiplication-division": [
+        { "id": 21, "question": "23 × 15 = ?", "options": ["345", "355", "365", "375"], "correct": 0, "emoji": "✖️" },
+        { "id": 22, "question": "256 ÷ 16 = ?", "options": ["14", "15", "16", "17"], "correct": 2, "emoji": "➗" },
+        { "id": 23, "question": "34 × 18 = ?", "options": ["602", "612", "622", "632"], "correct": 1, "emoji": "✖️" },
+        { "id": 24, "question": "324 ÷ 18 = ?", "options": ["16", "17", "18", "19"], "correct": 2, "emoji": "➗" },
+        { "id": 25, "question": "45 × 23 = ?", "options": ["1035", "1025", "1015", "1005"], "correct": 0, "emoji": "✖️" }
+      ]
+    },
+    "world-6": {
+      "multiplication-division": [
+        { "id": 26, "question": "67 × 34 = ?", "options": ["2278", "2268", "2258", "2248"], "correct": 0, "emoji": "✖️" },
+        { "id": 27, "question": "576 ÷ 24 = ?", "options": ["22", "23", "24", "25"], "correct": 2, "emoji": "➗" },
+        { "id": 28, "question": "78 × 45 = ?", "options": ["3510", "3500", "3490", "3480"], "correct": 0, "emoji": "✖️" },
+        { "id": 29, "question": "864 ÷ 36 = ?", "options": ["22", "23", "24", "25"], "correct": 2, "emoji": "➗" },
+        { "id": 30, "question": "89 × 56 = ?", "options": ["4984", "4974", "4964", "4954"], "correct": 0, "emoji": "✖️" }
+      ]
+    }
+  },
+  "achievements": [
+    { "id": "first-question", "name": "Birinchi Savol", "description": "Birinchi savolni to'g'ri javob ber", "icon": "🌟", "points": 10 },
+    { "id": "perfect-score", "name": "Mukammal Ball", "description": "5 ta savolni hammasini to'g'ri javob ber", "icon": "💯", "points": 50 },
+    { "id": "speed-demon", "name": "Tezlik Iblisi", "description": "10 soniyadan tezroq testni tugat", "icon": "⚡", "points": 30 },
+    { "id": "world-1-complete", "name": "Dunyo 1 Chempioni", "description": "1-dunyoni to'liq tugat", "icon": "🏆", "points": 100 },
+    { "id": "world-2-complete", "name": "Dunyo 2 Chempioni", "description": "2-dunyoni to'liq tugat", "icon": "🏆", "points": 150 },
+    { "id": "world-3-complete", "name": "Dunyo 3 Chempioni", "description": "3-dunyoni to'liq tugat", "icon": "🏆", "points": 200 },
+    { "id": "world-4-complete", "name": "Dunyo 4 Chempioni", "description": "4-dunyoni to'liq tugat", "icon": "🏆", "points": 250 },
+    { "id": "world-5-complete", "name": "Dunyo 5 Chempioni", "description": "5-dunyoni to'liq tugat", "icon": "🏆", "points": 300 },
+    { "id": "world-6-complete", "name": "Dunyo 6 Chempioni", "description": "6-dunyoni to'liq tugat", "icon": "🏆", "points": 400 }
+  ],
+  "shop": [
+    { "id": "avatar-1", "name": "Qahramon Avatar", "description": "Yangi qahramon profili", "price": 100, "icon": "🦸", "type": "avatar" },
+    { "id": "avatar-2", "name": "Olim Avatar", "description": "Olim profili", "price": 150, "icon": "👨‍🔬", "type": "avatar" },
+    { "id": "avatar-3", "name": "Kosmonavt Avatar", "description": "Kosmonavt profili", "price": 200, "icon": "👨‍🚀", "type": "avatar" },
+    { "id": "accessory-1", "name": "Oltin Dubulg'a", "description": "Oltin dubulg'a aksessuar", "price": 50, "icon": "👑", "type": "accessory" },
+    { "id": "accessory-2", "name": "Ko'k Ko'zlar", "description": "Ko'k ko'zlar aksessuar", "price": 75, "icon": "👓", "type": "accessory" },
+    { "id": "accessory-3", "name": "Qizil Soch", "description": "Qizil soch aksessuar", "price": 60, "icon": "🎨", "type": "accessory" }
+  ],
+  "leaderboard": []
+}

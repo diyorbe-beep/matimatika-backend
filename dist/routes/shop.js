@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const shopController_1 = require("../controllers/shopController");
+const auth_1 = require("../middleware/auth");
+const validation_1 = require("../middleware/validation");
+const types_1 = require("../types");
+const validation_2 = require("../middleware/validation");
+const router = (0, express_1.Router)();
+router.get('/items', (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), shopController_1.ShopController.getShopItems);
+router.get('/items/:id', (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), shopController_1.ShopController.getShopItem);
+router.get('/purchases/:userId?', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), shopController_1.ShopController.getUserPurchases);
+router.get('/currency/:userId?', auth_1.authenticateToken, (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), shopController_1.ShopController.getUserCurrency);
+router.post('/purchase', auth_1.authenticateToken, (0, validation_1.sensitiveOperationLimiter)(10), (0, validation_1.validateRequest)(validation_2.purchaseSchema), shopController_1.ShopController.purchaseItem);
+router.post('/items', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.shopItemCreationSchema), shopController_1.ShopController.createShopItem);
+router.put('/items/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), shopController_1.ShopController.updateShopItem);
+router.delete('/items/:id', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), (0, validation_1.validateRequest)(validation_2.uuidParamSchema, 'params'), shopController_1.ShopController.deleteShopItem);
+router.post('/currency/award', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), shopController_1.ShopController.awardCurrency);
+router.post('/currency/deduct', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), shopController_1.ShopController.deductCurrency);
+router.get('/analytics', auth_1.authenticateToken, (0, auth_1.requireRole)([types_1.UserRole.ADMIN]), shopController_1.ShopController.getShopAnalytics);
+router.get('/popular', (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), shopController_1.ShopController.getPopularItems);
+router.get('/category/:category', (0, validation_1.validateRequest)(validation_2.paginationSchema, 'query'), shopController_1.ShopController.getItemsByCategory);
+router.get('/featured', shopController_1.ShopController.getFeaturedItems);
+exports.default = router;
+//# sourceMappingURL=shop.js.map
