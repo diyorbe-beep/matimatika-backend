@@ -39,14 +39,32 @@ app.use(helmet({
   crossOriginEmbedderPolicy: false,
 }));
 
-// CORS configuration
-app.use(cors({
-  origin: config.corsOrigin,
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-  exposedHeaders: ['X-Total-Count'],
-}));
+// CORS configuration - Dynamic based on environment
+const getCorsConfig = () => {
+  const origins = config.corsOrigin;
+  
+  // In development, allow all origins for flexibility
+  if (config.nodeEnv === 'development') {
+    return {
+      origin: true, // Allow all origins in development
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+      exposedHeaders: ['X-Total-Count'],
+    };
+  }
+  
+  // In production, use configured origins
+  return {
+    origin: origins.length > 0 ? origins : false,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    exposedHeaders: ['X-Total-Count'],
+  };
+};
+
+app.use(cors(getCorsConfig()));
 
 // Rate limiting
 const limiter = rateLimit({
