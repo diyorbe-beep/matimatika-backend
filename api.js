@@ -108,6 +108,75 @@ const initializeFiles = async () => {
 
 // API Routes
 
+// Create admin user endpoint
+app.post('/api/admin/create-admin', async (req, res) => {
+  try {
+    const data = await fs.readFile(USERS_FILE, 'utf8');
+    const users = JSON.parse(data);
+    
+    // Check if admin already exists
+    const existingAdmin = Object.values(users).find((user: any) => user.email === "admin@mathquest.com");
+    
+    if (existingAdmin) {
+      return res.json({ success: true, message: 'Admin already exists' });
+    }
+    
+    // Create admin user
+    const adminUser = {
+      id: "admin",
+      email: "admin@mathquest.com",
+      name: "Admin",
+      avatar: "👨‍💼",
+      password: "admin123", // In real app, this should be hashed
+      role: "admin",
+      level: 10,
+      xp: 9999,
+      coins: 9999,
+      streak: 0,
+      weeklyStreak: 0,
+      hearts: 5,
+      maxHearts: 5,
+      lastActiveDate: new Date().toISOString(),
+      dailyChallengeCompleted: false,
+      league: "Diamond",
+      leaguePoints: 9999,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      quizStats: {
+        totalQuizzes: 0,
+        correctAnswers: 0,
+        totalTime: 0
+      },
+      moduleProgress: {
+        "addition-subtraction": 10,
+        "multiplication-division": 10,
+        "advanced-math": 10,
+        "geometry": 10,
+        "fractions": 10
+      },
+      achievements: [],
+      accessories: []
+    };
+    
+    users[adminUser.id] = adminUser;
+    await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), 'utf8');
+    
+    console.log('✅ Admin user created: admin@mathquest.com');
+    
+    res.json({ 
+      success: true, 
+      message: 'Admin user created successfully',
+      admin: adminUser 
+    });
+  } catch (error) {
+    console.error('Error creating admin:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Error creating admin user' 
+    });
+  }
+});
+
 // Get all users
 app.get('/api/users', async (req, res) => {
   try {
