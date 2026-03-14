@@ -31,8 +31,46 @@ const initializeFiles = async () => {
   try {
     await fs.access(USERS_FILE);
   } catch {
-    // Create empty users file
-    await fs.writeFile(USERS_FILE, JSON.stringify({}), 'utf8');
+    // Create users file with admin user
+    const adminUser = {
+      "admin": {
+        id: "admin",
+        email: "admin@mathquest.com",
+        name: "Admin",
+        avatar: "👨‍💼",
+        password: "admin123", // In real app, this should be hashed
+        role: "admin",
+        level: 10,
+        xp: 9999,
+        coins: 9999,
+        streak: 0,
+        weeklyStreak: 0,
+        hearts: 5,
+        maxHearts: 5,
+        lastActiveDate: new Date().toISOString(),
+        dailyChallengeCompleted: false,
+        league: "Diamond",
+        leaguePoints: 9999,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        quizStats: {
+          totalQuizzes: 0,
+          correctAnswers: 0,
+          totalTime: 0
+        },
+        moduleProgress: {
+          "addition-subtraction": 10,
+          "multiplication-division": 10,
+          "advanced-math": 10,
+          "geometry": 10,
+          "fractions": 10
+        },
+        achievements: [],
+        accessories: []
+      }
+    };
+    await fs.writeFile(USERS_FILE, JSON.stringify(adminUser, null, 2), 'utf8');
+    console.log('✅ Admin user created: admin@mathquest.com');
   }
   
   try {

@@ -1,0 +1,37 @@
+{
+  "admin": {
+    "id": "admin",
+    "email": "admin@mathquest.com",
+    "name": "Admin",
+    "avatar": "👨‍💼",
+    "password": "admin123",
+    "role": "admin",
+    "level": 10,
+    "xp": 9999,
+    "coins": 9999,
+    "streak": 0,
+    "weeklyStreak": 0,
+    "hearts": 5,
+    "maxHearts": 5,
+    "lastActiveDate": "2026-03-14T17:50:23.597Z",
+    "dailyChallengeCompleted": false,
+    "league": "Diamond",
+    "leaguePoints": 9999,
+    "createdAt": "2026-03-14T17:50:23.597Z",
+    "updatedAt": "2026-03-14T17:50:23.597Z",
+    "quizStats": {
+      "totalQuizzes": 0,
+      "correctAnswers": 0,
+      "totalTime": 0
+    },
+    "moduleProgress": {
+      "addition-subtraction": 10,
+      "multiplication-division": 10,
+      "advanced-math": 10,
+      "geometry": 10,
+      "fractions": 10
+    },
+    "achievements": [],
+    "accessories": []
+  }
+}
