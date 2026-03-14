@@ -112,9 +112,21 @@ const initializeFiles = async () => {
 app.get('/api/users', async (req, res) => {
   try {
     const data = await fs.readFile(USERS_FILE, 'utf8');
-    res.json(JSON.parse(data));
+    const users = JSON.parse(data);
+    
+    // Return in the expected format
+    const usersArray = Object.values(users);
+    
+    res.json({
+      success: true,
+      data: usersArray
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Error reading users data' });
+    console.error('Error reading users data:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Error reading users data' 
+    });
   }
 });
 
