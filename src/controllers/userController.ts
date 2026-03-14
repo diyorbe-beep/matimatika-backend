@@ -176,7 +176,7 @@ export class UserController {
         };
       }
 
-      // Update user data
+      // Update user data, but preserve real name if it exists
       const updatedUser = {
         ...user,
         hearts: userData.hearts !== undefined ? userData.hearts : user.hearts,
@@ -191,6 +191,9 @@ export class UserController {
         xp: userData.xp !== undefined ? userData.xp : user.xp,
         xp_max: userData.xpMax !== undefined ? userData.xpMax : user.xp_max,
         level: userData.level !== undefined ? userData.level : user.level,
+        // Update name only if it's a default one or if a new name is provided
+        name: (userData.name && userData.name !== user.name) ? userData.name : 
+              (user.name.startsWith('User ') ? userData.name || user.name : user.name),
         avatar: userData.avatar || user.avatar,
         accessories: userData.accessories || user.accessories,
         achievements: userData.achievements || user.achievements,
@@ -220,7 +223,20 @@ export class UserController {
   static async getAllUsers(req: Request, res: Response) {
     try {
       // Return all mock users sorted by XP
-      const users = mockStorage.getAll().sort((a: any, b: any) => b.xp - a.xp);
+      let users = mockStorage.getAll().sort((a: any, b: any) => b.xp - a.xp);
+      
+      // Update users with default names when they access the leaderboard
+      users = users.map((user: any) => {
+        if (user.name.startsWith('User ')) {
+          // Try to get a better name from localStorage or use a random one
+          const betterNames = ["Matematikachi", "Bilimdon", "Aqli", "Zukko", "Qahramon", "Chempion", "G'ayrat", "Zafar"];
+          const randomName = betterNames[Math.floor(Math.random() * betterNames.length)];
+          const updatedUser = { ...user, name: randomName };
+          mockStorage.set(user.id, updatedUser);
+          return updatedUser;
+        }
+        return user;
+      });
       
       // Return only necessary fields for leaderboard
       const leaderboardData = users.map((user: any) => ({
