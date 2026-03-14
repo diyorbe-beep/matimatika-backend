@@ -37,13 +37,26 @@ app.use((0, helmet_1.default)({
     },
     crossOriginEmbedderPolicy: false,
 }));
-app.use((0, cors_1.default)({
-    origin: app_1.config.corsOrigin,
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    exposedHeaders: ['X-Total-Count'],
-}));
+const getCorsConfig = () => {
+    const origins = app_1.config.corsOrigin;
+    if (app_1.config.nodeEnv === 'development') {
+        return {
+            origin: true,
+            credentials: true,
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+            allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+            exposedHeaders: ['X-Total-Count'],
+        };
+    }
+    return {
+        origin: origins.length > 0 ? origins : false,
+        credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+        exposedHeaders: ['X-Total-Count'],
+    };
+};
+app.use((0, cors_1.default)(getCorsConfig()));
 const limiter = (0, express_rate_limit_1.default)({
     windowMs: app_1.config.rateLimitWindowMs,
     max: app_1.config.rateLimitMaxRequests,

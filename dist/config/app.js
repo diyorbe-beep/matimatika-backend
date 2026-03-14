@@ -9,7 +9,8 @@ dotenv_1.default.config();
 const config = {
     port: parseInt(process.env.PORT || '3001', 10),
     nodeEnv: process.env.NODE_ENV || 'development',
-    corsOrigin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:5173'],
+    corsOrigin: process.env.CORS_ORIGIN?.split(',').map(url => url.trim()).filter(url => url) ||
+        (process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : ['http://localhost:5173']),
     rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10),
     rateLimitMaxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100', 10),
     jwtSecret: process.env.JWT_SECRET || 'fallback-secret-key-change-in-production',
