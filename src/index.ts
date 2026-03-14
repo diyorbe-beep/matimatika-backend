@@ -7,11 +7,27 @@ import morgan from 'morgan';
 import winston from 'winston';
 import { pool } from './config/database';
 
-// Add localStorage polyfill for Node.js
-if (typeof global !== 'undefined' && !(global as any).localStorage) {
-  const { LocalStorage } = require('node-localstorage');
-  (global as any).localStorage = new LocalStorage('./localStorage.json');
-  console.log('✅ localStorage polyfill added for Node.js');
+// Add localStorage polyfill for Node.js (only if not already available)
+try {
+  if (typeof global !== 'undefined' && !(global as any).localStorage) {
+    const { LocalStorage } = require('node-localstorage');
+    (global as any).localStorage = new LocalStorage('./localStorage.json');
+    console.log('✅ localStorage polyfill added for Node.js');
+  }
+} catch (error) {
+  console.warn('⚠️ localStorage polyfill failed, using memory fallback:', error);
+  // Fallback to memory-based storage
+  const memoryStorage = {
+    data: {} as Record<string, string>,
+    getItem: function(key: string) { return this.data[key] || null; },
+    setItem: function(key: string, value: string) { this.data[key] = value; },
+    removeItem: function(key: string) { delete this.data[key]; },
+    clear: function() { this.data = {}; }
+  };
+  
+  if (typeof global !== 'undefined') {
+    (global as any).localStorage = memoryStorage;
+  }
 }
 
 // Import routes

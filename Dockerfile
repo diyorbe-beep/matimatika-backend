@@ -28,8 +28,8 @@ RUN adduser -S nodejs -u 1001
 # Copy package files
 COPY package*.json ./
 
-# Install only production dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install all dependencies (including node-localstorage)
+RUN npm ci --include=dev && npm cache clean --force
 
 # Copy built application
 COPY --from=builder /app/dist ./dist
