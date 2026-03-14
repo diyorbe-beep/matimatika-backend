@@ -7,27 +7,34 @@ import morgan from 'morgan';
 import winston from 'winston';
 import { pool } from './config/database';
 
-// Add localStorage polyfill for Node.js (only if not already available)
-try {
-  if (typeof global !== 'undefined' && !(global as any).localStorage) {
-    const { LocalStorage } = require('node-localstorage');
-    (global as any).localStorage = new LocalStorage('./localStorage.json');
-    console.log('✅ localStorage polyfill added for Node.js');
-  }
-} catch (error) {
-  console.warn('⚠️ localStorage polyfill failed, using memory fallback:', error);
-  // Fallback to memory-based storage
+// Pure Node.js localStorage implementation (no external dependencies)
+if (typeof global !== 'undefined' && !(global as any).localStorage) {
+  // Memory-based localStorage implementation
   const memoryStorage = {
     data: {} as Record<string, string>,
-    getItem: function(key: string) { return this.data[key] || null; },
-    setItem: function(key: string, value: string) { this.data[key] = value; },
-    removeItem: function(key: string) { delete this.data[key]; },
-    clear: function() { this.data = {}; }
+    getItem: function(key: string) { 
+      return this.data[key] || null; 
+    },
+    setItem: function(key: string, value: string) { 
+      this.data[key] = value; 
+    },
+    removeItem: function(key: string) { 
+      delete this.data[key]; 
+    },
+    clear: function() { 
+      this.data = {}; 
+    },
+    get length() {
+      return Object.keys(this.data).length;
+    },
+    key: function(index: number) {
+      const keys = Object.keys(this.data);
+      return keys[index] || null;
+    }
   };
   
-  if (typeof global !== 'undefined') {
-    (global as any).localStorage = memoryStorage;
-  }
+  (global as any).localStorage = memoryStorage;
+  console.log('✅ Pure Node.js localStorage implementation added');
 }
 
 // Import routes
